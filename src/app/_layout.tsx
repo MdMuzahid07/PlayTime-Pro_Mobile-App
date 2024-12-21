@@ -36,7 +36,7 @@ const _layout = () => {
                 }}
             >
                 <Tabs.Screen name="index" options={{
-                    title: "Home",
+                    title: "Sports",
                     tabBarIcon: ({ focused }) => (
                         <Octicons name="home" size={24} color={focused ? '#F85E59' : '#8E8E93'} />
                     )
