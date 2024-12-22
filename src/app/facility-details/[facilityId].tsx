@@ -1,8 +1,11 @@
-import { Text, ScrollView } from 'react-native'
+import { Text, ScrollView, View, Dimensions, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import { useWindowDimensions } from 'react-native';
 import RenderHtml from 'react-native-render-html';
+import Carousel from 'react-native-reanimated-carousel';
+
+const { width } = Dimensions.get('window');
 
 
 const facility = {
@@ -29,7 +32,7 @@ const FacilityDetails = () => {
 
     return (
         <ScrollView
-            style={{ flex: 1, padding: 15 }}
+            style={{ flex: 1 }}
             showsVerticalScrollIndicator={false}
         >
             <Stack.Screen
@@ -47,7 +50,26 @@ const FacilityDetails = () => {
                 }}
             />
 
-            <Text>
+
+            <View>
+                <Carousel
+                    loop
+                    width={width}
+                    height={width * 0.6} // Adjust the aspect ratio of the slider
+                    autoPlay
+                    autoPlayInterval={2000} // 3 seconds
+                    data={facility?.image}
+                    scrollAnimationDuration={1000}
+                    renderItem={({ item }) => (
+                        <View >
+                            <Image source={{ uri: item }} style={styles.image} />
+                        </View>
+                    )}
+                />
+            </View>
+
+
+            <Text style={{ flex: 1, padding: 15 }}>
                 <RenderHtml
                     contentWidth={width}
                     source={{ html: facility.description }}
@@ -58,3 +80,39 @@ const FacilityDetails = () => {
 }
 
 export default FacilityDetails;
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f8f8f8',
+    },
+    card: {
+        borderRadius: 15,
+        overflow: 'hidden',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+    },
+    textContainer: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: 10,
+    },
+    title: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+});
