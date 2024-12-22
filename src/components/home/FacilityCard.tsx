@@ -1,14 +1,16 @@
-import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Alert, Modal } from 'react-native';
 
 const FacilityCard = ({ facility }: any) => {
+    const router = useRouter();
 
-    const handlePress = () => {
-        Alert.alert('FacilityCard', "joahdfpoadfhsapeosfh");
-    };
+    const handleOnPress = (facilityId: string) => {
+        router.push(`/facility-details/${facilityId}`);
+    }
 
     return (
-        <TouchableOpacity onPress={handlePress} style={styles.cardContainer}>
+        <TouchableOpacity onPress={() => handleOnPress(facility._id)} style={styles.cardContainer}>
             {/* Image as Background */}
             <ImageBackground
                 source={{ uri: facility?.image?.[0] }}

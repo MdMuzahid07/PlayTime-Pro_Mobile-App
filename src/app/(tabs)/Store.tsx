@@ -1,6 +1,6 @@
 import { View, Text, Alert } from 'react-native'
 import React, { useState } from 'react'
-import SearchBar from '../components/ui/SearchBar';
+import SearchBar from '../../components/ui/SearchBar';
 
 const Store = () => {
     const [search, setSearch] = useState('');

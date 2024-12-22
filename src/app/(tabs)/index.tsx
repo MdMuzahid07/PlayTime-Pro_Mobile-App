@@ -1,8 +1,8 @@
-import { View, ScrollView, Alert, FlatList, Text } from 'react-native'
-import SearchBar from '../components/ui/SearchBar';
+import { View, ScrollView, Alert, FlatList, Text, Modal } from 'react-native'
 import { useState } from 'react';
-import FacilityCard from '../components/home/FacilityCard';
-import FacilityCardRegular from '../components/home/FacilityCardRegular';
+import FacilityCardRegular from '../../components/home/FacilityCardRegular';
+import FacilityCard from '../../components/home/FacilityCard';
+import SearchBar from '../../components/ui/SearchBar';
 
 
 const facilities = [
@@ -145,12 +145,11 @@ const facilities = [
     ],
     "isDeleted": false
   }
-]
+];
+
 
 const Home = () => {
   const [search, setSearch] = useState('');
-
-
 
   const showAlert = () => {
     Alert.alert(
@@ -173,15 +172,6 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
       >
 
-        {/* <View style={{ padding: 15, backgroundColor: "#121212" }}>
-          <Image
-            source={{ uri: 'https://res.cloudinary.com/dlxfcyc7x/image/upload/v1734375218/wmsxggbcp2prikwajhgn.png' }}
-            style={{ width: '100%', height: 100, borderRadius: 15 }}
-            resizeMode="cover"
-          />
-        </View> */}
-
-
         <View style={{ paddingTop: 15, paddingBottom: 15 }}>
           <View style={{ padding: 15, paddingBottom: 5, paddingTop: 0 }}>
             <Text style={{ fontSize: 20, color: "121212" }}>Featured Facilities</Text>
@@ -196,6 +186,7 @@ const Home = () => {
             />
           </View>
         </View>
+
 
         <View style={{ paddingTop: 15, paddingBottom: 100, backgroundColor: "#fff" }}>
           <View style={{ padding: 15, paddingBottom: 5, paddingTop: 0 }}>
