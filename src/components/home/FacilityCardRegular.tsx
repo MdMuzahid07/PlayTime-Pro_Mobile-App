@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 
-const FacilityCard = ({ facility }: any) => {
+const FacilityCardRegular = ({ facility }: any) => {
 
     const handlePress = () => {
         Alert.alert('FacilityCard', "joahdfpoadfhsapeosfh");
@@ -25,7 +25,7 @@ const FacilityCard = ({ facility }: any) => {
     );
 };
 
-export default FacilityCard;
+export default FacilityCardRegular;
 
 const styles = StyleSheet.create({
     cardContainer: {
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         // borderWidth: 2
     },
     imageBackground: {
-        width: 150,
-        height: 200,
+        width: "100%",
+        height: 250,
         justifyContent: 'flex-end', // Align the text at the bottom of the image
     },
     image: {

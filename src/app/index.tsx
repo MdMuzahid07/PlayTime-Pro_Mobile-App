@@ -1,7 +1,8 @@
-import { View, ScrollView, Image, TextInput, TouchableOpacity, Alert, FlatList } from 'react-native'
+import { View, ScrollView, Alert, FlatList, Text } from 'react-native'
 import SearchBar from '../components/ui/SearchBar';
 import { useState } from 'react';
 import FacilityCard from '../components/home/FacilityCard';
+import FacilityCardRegular from '../components/home/FacilityCardRegular';
 
 
 const facilities = [
@@ -169,27 +170,48 @@ const Home = () => {
       />
 
       <ScrollView
-        contentContainerStyle={{}}
         showsVerticalScrollIndicator={false}
       >
 
-        <View style={{ padding: 15 }}>
+        {/* <View style={{ padding: 15, backgroundColor: "#121212" }}>
           <Image
             source={{ uri: 'https://res.cloudinary.com/dlxfcyc7x/image/upload/v1734375218/wmsxggbcp2prikwajhgn.png' }}
-            style={{ width: '100%', height: 200, borderRadius: 15, }}
+            style={{ width: '100%', height: 100, borderRadius: 15 }}
             resizeMode="cover"
           />
+        </View> */}
 
+
+        <View style={{ paddingTop: 15, paddingBottom: 15 }}>
+          <View style={{ padding: 15, paddingBottom: 5, paddingTop: 0 }}>
+            <Text style={{ fontSize: 20, color: "121212" }}>Featured Facilities</Text>
+          </View>
+          <View>
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={facilities}
+              renderItem={({ item }) => (<FacilityCard facility={item} />)}
+              keyExtractor={item => item?._id}
+            />
+          </View>
+        </View>
+
+        <View style={{ paddingTop: 15, paddingBottom: 100, backgroundColor: "#fff" }}>
+          <View style={{ padding: 15, paddingBottom: 5, paddingTop: 0 }}>
+            <Text style={{ fontSize: 20, color: "121212" }}>Available Facilities</Text>
+          </View>
+          <View>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              data={facilities}
+              renderItem={({ item }) => (<FacilityCardRegular facility={item} />)}
+              keyExtractor={item => item?._id}
+            />
+          </View>
         </View>
 
 
-        <FlatList
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          data={facilities}
-          renderItem={({ item }) => (<FacilityCard facility={item} />)}
-          keyExtractor={item => item?._id}
-        />
       </ScrollView >
     </View>
   )
